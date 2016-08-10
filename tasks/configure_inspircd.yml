@@ -1,0 +1,33 @@
+---
+- name: Copy inspircd.conf
+  template: 
+     src: inspircd.conf.j2
+     dest: "{{ inspircd_conf_dir }}/inspircd.conf"  
+     force: yes
+     backup: yes
+
+- name: Copy modules.conf 
+  template: 
+     src: modules.conf.j2
+     dest: "{{ inspircd_conf_dir }}/modules.conf"  
+     force: yes
+     backup: yes
+
+- name: Copy motd.txt 
+  template: 
+     src: motd.txt.j2
+     dest: "{{ inspircd_conf_dir }}/motd.txt"  
+     force: yes
+     backup: yes
+
+- name: Copy opers.conf 
+  template: 
+     src: opers.conf.j2
+     dest: "{{ inspircd_conf_dir }}/opers.conf"  
+
+- name: Copy rules.txt 
+  template: 
+     src: rules.txt.j2
+     dest: "{{ inspircd_conf_dir }}/rules.txt"  
+
+

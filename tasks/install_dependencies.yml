@@ -1,0 +1,12 @@
+---
+- name: Install development tools
+  become: true
+  yum:
+    name: '@Development Tools'
+    state: present
+
+- name: Install required (perl) packages
+  become: true
+  yum:
+    name: 'perl-libwww-perl,perl-Crypt-SSLeay'
+    state: present
