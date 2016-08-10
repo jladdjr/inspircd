@@ -1,3 +1,20 @@
 ---
-#- name: Determine if irc server running
-  
+- name: Restart inspircd
+  debug: msg="Determining if inspircd running first.."
+  changed_when: True
+  notify:
+    - Check if inspircd running
+    - Stop inspircd after check
+    - Start inspircd
+
+- name: Check if inspircd running
+  shell: ps aux | grep inspircd
+  changed_when: "'bin/inspircd' in cmd.stdout"
+  register: cmd
+
+- name: Stop inspircd after check
+  command: "{{ inspircd_install_dir }}/run/inspircd stop"
+  when: "'bin/inspircd' in cmd.stdout"
+
+- name: Start inspircd
+  command: "{{ inspircd_install_dir }}/run/inspircd start"

@@ -1,39 +1,29 @@
 ---
-- name: Clear tmp directory 
+- name: Clear install directory
+  become: true
   file:
-    path: "{{ inspircd_tmp_dir }}"
-    state: absent
+     path: "{{ inspircd_install_dir }}"
+     state: absent
 
-- name: Create tmp directory
-  file: 
-     path: "{{ inspircd_tmp_dir }}"
+- name: Create install directory
+  become: true
+  file:
+     path: "{{ inspircd_install_dir }}"
      state: directory
+     owner: "{{ ansible_user_id }}"
+     group: "{{ ansible_user_id }}"
 
 - name: Download inspircd
   git:
     repo: https://github.com/inspircd/inspircd.git
     version: "{{ inspircd_branch }}"
-    dest: "{{ inspircd_tmp_dir }}"
-
-- name: Clear install directory
-  become: true
-  file: 
-     path: "{{ inspircd_install_dir }}"
-     state: absent 
-
-- name: Create install directory
-  become: true
-  file: 
-     path: "{{ inspircd_install_dir }}"
-     state: directory 
-     owner: "{{ ansible_user_id }}" 
-     group: "{{ ansible_user_id }}" 
+    dest: "{{ inspircd_install_dir }}"
 
 - name: Configure inspircd
-  command: ./configure --disable-interactive --directory="{{ inspircd_install_dir }}" chdir="{{ inspircd_tmp_dir }}"
+  command: ./configure --disable-interactive chdir="{{ inspircd_install_dir }}"
 
 - name: Build inspircd
-  command: make chdir="{{ inspircd_tmp_dir }}"
+  command: make chdir="{{ inspircd_install_dir }}"
 
 - name: Install inspircd
-  command: make -n install chdir="{{ inspircd_tmp_dir }}"
+  command: make install chdir="{{ inspircd_install_dir }}"

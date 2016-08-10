@@ -10,7 +10,7 @@ inspircd_bind_port: "6667"
 
 # Power passwords (for halting / restarting server)
 inspircd_power_die_password: "FIXME"
-inspircd_power_restart_password: "FIXME" 
+inspircd_power_restart_password: "FIXME"
 
 # Message of the Day
 inspircd_motd: "-- Welcome! ---"

@@ -1,12 +1,9 @@
 ---
-# Path where inspircd code is copied
-inspircd_tmp_dir: "/tmp/inspircd"
-
 # Path where inspircd is installed
 inspircd_install_dir: "/usr/local/src/inspircd"
 
-# Path where inspircd config files are created 
-inspircd_conf_dir: "{{ inspircd_install_dir }}/run/conf" 
+# Path where inspircd config files are created (do not edit)
+inspircd_conf_dir: "{{ inspircd_install_dir }}/run/conf"
 
 # inspircd branch to install from (insp20 => latest stable)
-inspircd_branch: insp20 
+inspircd_branch: insp20
