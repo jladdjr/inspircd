@@ -1,6 +1,6 @@
 galaxy_info:
   author: jladdjr
-  description: Ansible role to deploy inspircd IRC server
+  description: Ansible role to deploy InspIRCd IRC server
   company: Ansible, Inc.
 
   # If the issue tracker for your role is not on github, uncomment the
