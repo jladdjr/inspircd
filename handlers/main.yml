@@ -6,6 +6,7 @@
     - Check if inspircd running
     - Stop inspircd after check
     - Start inspircd
+    - Test connection
 
 - name: Check if inspircd running
   shell: ps aux | grep inspircd
@@ -18,3 +19,11 @@
 
 - name: Start inspircd
   command: "{{ inspircd_install_dir }}/run/inspircd start"
+
+- name: Test connection
+  irc:
+     server: localhost
+     port: "{{ inspircd_bind_port }}"
+     channel: "#does_not_exist"
+     nick: "ansible_test"
+     msg: "Testing.."

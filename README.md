@@ -3,6 +3,12 @@ Role Name
 
 A brief description of the role goes here.
 
+* Must be able to sudo to privileged user (if wanting to create directory in directory restricted to root)
+* Role installs inspircd with *basic* configuration
+* Go over variables - what can / can't be changed
+* Describe what system it can be installed on
+* Describe how to become operator (username / password / cmd) (and what privileges operator has)
+
 Requirements
 ------------
 
