@@ -2,7 +2,7 @@
 # Admin user
 inspircd_admin_real_name: "IRC Admin"
 inspircd_admin_nick: "admin"
-inspircd_admin_email: "admin@donotreply.com"
+inspircd_admin_email: "admin@domain.com"
 
 # IRC Server Bind Information
 inspircd_bind_address: "*"

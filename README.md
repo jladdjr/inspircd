@@ -1,37 +1,69 @@
 Role Name
 =========
 
-A brief description of the role goes here.
-
-* Must be able to sudo to privileged user (if wanting to create directory in directory restricted to root)
-* Role installs inspircd with *basic* configuration
-* Go over variables - what can / can't be changed
-* Describe what system it can be installed on
-* Describe how to become operator (username / password / cmd) (and what privileges operator has)
+This role installs and configures an [InspIRCd](http://www.inspircd.org) IRC server using a minimal set of configuration options.
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+* Privilege escalation 
+* Only EL7 systems supported at this time
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+The following defaults are found in [defaults/main.yml](defaults/main.yml):
+
+```yaml
+
+# Path where inspircd is installed
+inspircd_install_dir: "/usr/local/src/inspircd"
+
+# inspircd branch to install from (insp20 => latest stable)
+inspircd_branch: insp20
+```
+
+Configuration information for the server address and admin user
+are stored in [vars/main.yml](vars/main.yml):
+
+```yaml
+---
+# Admin user
+inspircd_admin_real_name: "IRC Admin"
+inspircd_admin_nick: "admin"
+inspircd_admin_email: "admin@domain.com"
+
+# IRC Server Bind Information
+inspircd_bind_address: "*"
+inspircd_bind_port: "6667"
+
+# Power passwords (for halting / restarting server)
+inspircd_power_die_password: "FIXME"
+inspircd_power_restart_password: "FIXME"
+
+# Message of the Day
+inspircd_motd: "-- Welcome! ---"
+
+# Operator Privileges
+inspircd_operator_password: "FIXME"
+```
 
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+None
 
 Example Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
-
+```yaml
     - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+      roles: 
+      - role: inspircd
+        inspircd_power_die_password: "<password>"
+        inspircd_power_restart_password: "<password>"
+        inspircd_operator_password: "<password>"
+```
 
 License
 -------
@@ -41,4 +73,4 @@ BSD
 Author Information
 ------------------
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+James Ladd, Jr.
