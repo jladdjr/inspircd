@@ -1,5 +1,7 @@
 ---
 - name: Copy inspircd.conf
+  become: true
+  become_user: "{{ inspircd_user }}"
   template:
      src: inspircd.conf.j2
      dest: "{{ inspircd_conf_dir }}/inspircd.conf"
@@ -9,6 +11,8 @@
     - Restart inspircd
 
 - name: Copy modules.conf
+  become: true
+  become_user: "{{ inspircd_user }}"
   template:
      src: modules.conf.j2
      dest: "{{ inspircd_conf_dir }}/modules.conf"
@@ -18,6 +22,8 @@
     - Restart inspircd
 
 - name: Copy motd.txt
+  become: true
+  become_user: "{{ inspircd_user }}"
   template:
      src: motd.txt.j2
      dest: "{{ inspircd_conf_dir }}/motd.txt"
@@ -27,6 +33,8 @@
     - Restart inspircd
 
 - name: Copy opers.conf
+  become: true
+  become_user: "{{ inspircd_user }}"
   template:
      src: opers.conf.j2
      dest: "{{ inspircd_conf_dir }}/opers.conf"
@@ -34,6 +42,8 @@
     - Restart inspircd
 
 - name: Copy rules.txt
+  become: true
+  become_user: "{{ inspircd_user }}"
   template:
      src: rules.txt.j2
      dest: "{{ inspircd_conf_dir }}/rules.txt"

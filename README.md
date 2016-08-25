@@ -6,7 +6,7 @@ This role installs and configures an [InspIRCd](http://www.inspircd.org) IRC ser
 Requirements
 ------------
 
-* Privilege escalation 
+* Must run as root (Note: Role creates new non-root user, installs / runs server under new user) 
 * Only EL7 systems supported at this time
 
 Role Variables
@@ -15,6 +15,8 @@ Role Variables
 The following defaults are found in [defaults/main.yml](defaults/main.yml):
 
 ```yaml
+# Inspircd user
+inspircd_user: "irc"
 
 # Path where inspircd is installed
 inspircd_install_dir: "/usr/local/src/inspircd"

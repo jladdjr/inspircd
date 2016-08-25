@@ -1,4 +1,7 @@
 ---
+# Inspircd user
+inspircd_user: "irc"
+
 # Path where inspircd is installed
 inspircd_install_dir: "/usr/local/src/inspircd"
 

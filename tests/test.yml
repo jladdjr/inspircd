@@ -1,5 +1,4 @@
 ---
 - hosts: irc_servers
-  remote_user: root
   roles:
     - local_inspircd

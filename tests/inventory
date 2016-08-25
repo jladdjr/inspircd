@@ -1,2 +1,2 @@
 [irc_servers]
-localhost ansible_user=user ansible_become_user=root
+localhost ansible_user=root
