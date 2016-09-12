@@ -6,7 +6,7 @@ This role installs and configures an [InspIRCd](http://www.inspircd.org) IRC ser
 Requirements
 ------------
 
-* Must run as root (Note: Role creates new non-root user, installs / runs server under new user) 
+* Must run as root (Note: Role creates new non-root user, installs / runs server under new user)
 * Only EL7 systems supported at this time
 
 Role Variables
@@ -60,12 +60,22 @@ Example Playbook
 
 ```yaml
     - hosts: servers
-      roles: 
+      roles:
       - role: inspircd
         inspircd_power_die_password: "<password>"
         inspircd_power_restart_password: "<password>"
         inspircd_operator_password: "<password>"
 ```
+
+Deploying container from role
+-----------------------------
+
+[Ansible Container](https://www.ansible.com/ansible-container) creates
+Docker containers based on Ansible roles. Point ansible-container to the
+[ansible](ansible/) directory to create an IRC server from this role.
+
+Note: At the time of writing, the role may need to be located inside the
+ansible directory in order for ansible-container to find the role.
 
 License
 -------
